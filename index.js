@@ -1,5 +1,6 @@
 const express = require('express');
 const dataModel = require('./data-model.js');
+const db = require('./data/db.js');
 
 /*
 - [ ] Build an API with endpoints for:
@@ -45,6 +46,62 @@ server.get('/tasks', (req, res) => {
     .catch(err => {
       console.log(err);
       res.status(500).json({ error: 'The tasks could not be retrieved.' });
+    });
+});
+
+server.post('/resources', (req, res) => {
+  const { name, description } = req.body;
+  if (!description || !name) {
+    return res.status(400).json({
+      error: 'Needs description and name'
+    });
+  }
+
+  dataModel
+    .insertResource({ name, description })
+    .then(newResource => {
+      res.status(200).json(newResource);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ error: 'Error inserting resource' });
+    });
+});
+
+server.post('/tasks', (req, res) => {
+  db('tasks')
+    .insert(req.body)
+    .then(ids => {
+      const id = ids[0];
+
+      db('projects')
+        .where({ id })
+        .first()
+        .then(task => {
+          res.status(201).json(task);
+        });
+    })
+    .catch(error => {
+      res.status(500).json(error);
+    });
+});
+
+server.post('/projects', (req, res) => {
+  const { name, description, completed } = req.body;
+  if (!description || !name || typeof completed !== 'boolean') {
+    return res.status(400).json({
+      error: "Needs description and name. 'completed' must have boolean value"
+    });
+  }
+
+  dataModel
+    .insertProject({ name, description, completed })
+    .then(newProject => {
+      res.status(200).json(newProject);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json({ error: 'Error inserting project' });
     });
 });
 
