@@ -3,12 +3,12 @@ const dataModel = require('./data-model.js');
 const db = require('./data/db.js');
 
 /*
-- [ ] Build an API with endpoints for:
-  - [ ] adding resources.
+- [x] Build an API with endpoints for:
+  - [x] adding resources.
   - [x] retrieving a list of resources.
-  - [ ] adding projects.
+  - [x] adding projects.
   - [x] retrieving a list of projects.
-  - [ ] adding tasks.
+  - [x] adding tasks.
   - [x] retrieving a list of tasks. **The list of tasks should include the project name and project description**.
 */
 const server = express();
