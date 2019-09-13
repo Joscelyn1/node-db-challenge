@@ -33,13 +33,17 @@ exports.up = function(knex) {
         .unsigned()
         .notNullable()
         .reference('id')
-        .inTable('projects');
+        .inTable('projects')
+        .onDelete('CASCADE')
+        .onUpdate('CASCADE');
       tbl
         .integer('resource_id')
         .unsigned()
         .notNullable()
         .reference('id')
-        .inTable('resources');
+        .inTable('resources')
+        .onDelete('CASCADE')
+        .onUpdate('CASCADE');
     });
 };
 
