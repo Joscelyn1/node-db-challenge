@@ -22,7 +22,9 @@ server.get('/', (req, res) => {
 server.get('/resources', (req, res) => {
   dataModel
     .getResources()
-    .then(resources => res.status(200).json(resources))
+    .then(resources => {
+      res.status(200).json(resources);
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json({ error: 'The resources could not be retrieved.' });
@@ -32,7 +34,12 @@ server.get('/resources', (req, res) => {
 server.get('/projects', (req, res) => {
   dataModel
     .getProjects()
-    .then(projects => res.status(200).json(projects))
+    .then(projects => {
+      for (let project of projects) {
+        project.completed = project.completed == true;
+      }
+      res.status(200).json(projects);
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json({ error: 'The projects could not be retrieved.' });
@@ -42,7 +49,12 @@ server.get('/projects', (req, res) => {
 server.get('/tasks', (req, res) => {
   dataModel
     .getTasks()
-    .then(tasks => res.status(200).json(tasks))
+    .then(tasks => {
+      for (let task of tasks) {
+        task.completed = task.completed == true;
+      }
+      res.status(200).json(tasks);
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json({ error: 'The tasks could not be retrieved.' });

@@ -16,12 +16,12 @@ The Minimum Viable Product must be completed in three hours.
 
 Follow these steps to set up and work on your project:
 
-- [ ] Create a forked copy of this project.
-- [ ] Add your _Team Lead_ as collaborator on Github.
-- [ ] Clone your forked version of the Repository.
-- [ ] Create a new Branch on the clone: git checkout -b `firstName-lastName`.
-- [ ] Implement the project on this Branch, committing changes regularly.
-- [ ] Push commits: git push origin `firstName-lastName`.
+- [x] Create a forked copy of this project.
+- [x] Add your _Team Lead_ as collaborator on Github.
+- [x] Clone your forked version of the Repository.
+- [x] Create a new Branch on the clone: git checkout -b `firstName-lastName`.
+- [x] Implement the project on this Branch, committing changes regularly.
+- [x] Push commits: git push origin `firstName-lastName`.
 
 Follow these steps for completing your project.
 
@@ -52,14 +52,14 @@ Take the steps necessary to complete the project from scratch. Start by initiali
 
 Complete the following tasks:
 
-- [ ] Design the data model and use _knex migrations_ to create the database and tables.
-- [ ] Build an API with endpoints for:
-  - [ ] adding resources.
-  - [ ] retrieving a list of resources.
-  - [ ] adding projects.
-  - [ ] retrieving a list of projects.
-  - [ ] adding tasks.
-  - [ ] retrieving a list of tasks. **The list of tasks should include the project name and project description**.
+- [x] Design the data model and use _knex migrations_ to create the database and tables.
+- [x] Build an API with endpoints for:
+  - [x] adding resources.
+  - [x] retrieving a list of resources.
+  - [x] adding projects.
+  - [x] retrieving a list of projects.
+  - [x] adding tasks.
+  - [x] retrieving a list of tasks. **The list of tasks should include the project name and project description**.
 - [ ] When returning `project` or `task` information, the `completed` property should be `true` or `false`.
 
 For example, instead of returning a `task` that looks like this:
